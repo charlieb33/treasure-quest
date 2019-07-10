@@ -6,7 +6,7 @@
 ### Wireframe
 <img width="1025" alt="treasure-quest-wireframe" src="https://user-images.githubusercontent.com/44616151/60978095-9d8a7300-a2fe-11e9-86a8-9f473b62507e.png">
 
-# Number Key
+### Number Key
 1. The game's title
 2. The 'Play Game' button
   * Sends user to the main game
