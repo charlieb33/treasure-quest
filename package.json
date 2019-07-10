@@ -1,0 +1,26 @@
+{
+  "name": "treasure-quest",
+  "version": "0.1.0",
+  "description": "The user plays as an explorer, and they have to traverse a maze to find treasure. The player cannot pass through most of the walls, but some walls are fake and have secret treasures in them. Find either the main treasure or all secret treasures to win the game. Avoid certain hazards because hitting them will result in a game over.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js",
+    "fix-all": "eslint --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlieb33/treasure-quest.git"
+  },
+  "author": "Charles Beach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlieb33/treasure-quest/issues"
+  },
+  "homepage": "https://github.com/charlieb33/treasure-quest#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0"
+  }
+}
