@@ -9,26 +9,40 @@
     background-color: blue;
     margin: 0 auto;
     position: relative;
+    display: flex;
 }
 
 #hero {
     width: 100px;
     height: 100px;
     background-color: red;
+    position: absolute;
 }
 
 #treasure {
-
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: absolute;
 }
 
 .secret-treasure {
-
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: absolute;
 }
 
 .wall {
-
+    width: 100px;
+    height: 100px;
+    background-color: lightgrey;
+    position: absolute;
 }
 
 .fake-wall {
-
+    width: 100px;
+    height: 100px;
+    background-color: darkgray;
+    position: absolute;
 }
