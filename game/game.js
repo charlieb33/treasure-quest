@@ -58,18 +58,14 @@ document.body.addEventListener('keydown', function(evt) {
     }
     if (keyCode === 87 || keyCode === 38) {
         goUp()
-        console.log('up');
     }
     else if (keyCode === 65 || keyCode === 37) {
         goLeft()
-        console.log('left');
     }
     else if (keyCode === 83 || keyCode === 40) {
         goDown()
-        console.log('down');
     }
     else if (keyCode === 68 || keyCode === 39) {
         goRight()
-        console.log('right');
     }
 });
