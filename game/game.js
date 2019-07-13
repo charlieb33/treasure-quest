@@ -1,7 +1,10 @@
 /* eslint-disable */
 
-const player = {x: 0, y: 0}
-const keys = [87, 38, 65, 37, 83, 40, 68, 39];
+const playerPos = {x: 0, y: 0}
+const player = document.getElementById('hero');
+const keys = [87, 38, 65, 37, 83, 40, 68, 39]
+const walls = document.querySelectorAll('.wall')
+const hazards = document.querySelectorAll('.hazard')
 
 const isInGrid = function(x, y) {
     if (x < 0 || y < 0 || x > 11 || y > 7) {
@@ -10,44 +13,66 @@ const isInGrid = function(x, y) {
     return true
 }
 
+const isBlockInWay = function(x, y) {
+    for (let i = 0; i < walls.length; i++) {
+        const wall = walls[i]
+        if (player.style.left + player.style.width > wall.style.width) {
+            console.log("hit wall")
+            return true
+        }
+    }
+    return false
+}
+
+const isHazardInWay = function(x, y) {
+    for (let j = 0; j < hazards.length; j++) {
+        const hazard = hazards[j]
+        if (playerPos.x + player.style.width > wall.style.width) {
+            console.log("hit wall")
+            return true
+        }
+    }
+    return false
+}
+
 const isAbleToMove = function(x, y) {
-    if (!isInGrid(x, y)) {
+    console.log(x, y)
+    if (!isInGrid(x, y) || isBlockInWay(x, y)) {
         return false
     }
     return true
 }
 
 const moveThePlayer = function(x, y) {
-    const player = document.getElementById('hero');
-    player.style.left = (x * 100).toString() + 'px';
-    player.style.top = (y * 100).toString() + 'px';
+    player.style.left = (playerPos.x * 100) + 'px';
+    player.style.top = (playerPos.y * 100) + 'px';
 }
 
 function goUp() {
-    if(isAbleToMove(player.x, player.y - 1)) {
-        player.y -= 1;
-        moveThePlayer(player.x, player.y);
+    if(isAbleToMove(playerPos.x, playerPos.y - 1)) {
+        playerPos.y -= 1;
+        moveThePlayer(playerPos.x, playerPos.y);
     }
 }
 
 function goLeft() {
-    if(isAbleToMove(player.x - 1, player.y)) {
-        player.x -= 1;
-        moveThePlayer(player.x, player.y);
+    if(isAbleToMove(playerPos.x - 1, playerPos.y)) {
+        playerPos.x -= 1;
+        moveThePlayer(playerPos.x, playerPos.y);
     }
 }
 
 function goDown() {
-    if(isAbleToMove(player.x, player.y + 1)) {
-        player.y += 1;
-        moveThePlayer(player.x, player.y);
+    if(isAbleToMove(playerPos.x, playerPos.y + 1)) {
+        playerPos.y += 1;
+        moveThePlayer(playerPos.x, playerPos.y);
     }
 }
 
 function goRight() {
-    if(isAbleToMove(player.x + 1, player.y)) {
-        player.x += 1;
-        moveThePlayer(player.x, player.y);
+    if(isAbleToMove(playerPos.x + 1, playerPos.y)) {
+        playerPos.x += 1;
+        moveThePlayer(playerPos.x, playerPos.y);
     }
 }
 

@@ -25,16 +25,12 @@
     width: 100px;
     height: 100px;
     background-color: green;
-    /* position: absolute; */
     grid-column: 12;
     grid-row: 3;
 }
 
 .wall {
-    /* width: 100px;
-    height: 100px; */
     background-color: orange;
-    /* position: absolute; */
 }
 
 #wall-one {
@@ -111,3 +107,41 @@
     grid-column: 10;
     grid-row: 1;
 }
+
+/* treasurePulse {
+    animation: pulse infinite;
+}
+
+hazardLeftToRight {
+    animation: leftToRight infinite;
+}
+
+@keyframes pulse {
+    0% {
+
+    }
+    25% {
+
+    }
+    50% {
+
+    }
+    75% {
+
+    }
+    100% {
+
+    }
+}
+
+@keyframes leftToRight {
+    transform: leftToRight()
+}
+
+@keyframes upToDown {
+    transform: upToDown()
+}
+
+@keyframes downToUp {
+    transform: downToUp()
+} */
