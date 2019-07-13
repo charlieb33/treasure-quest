@@ -1,24 +1,106 @@
 /* eslint-disable */
 
+const wallGridArr = []
+const hazardGridArr = []
 const playerPos = {x: 0, y: 0}
 const player = document.getElementById('hero');
 const keys = [87, 38, 65, 37, 83, 40, 68, 39]
 const walls = document.querySelectorAll('.wall')
 const hazards = document.querySelectorAll('.hazard')
 
+walls[0].style.gridColumnStart = 1
+walls[0].style.gridColumnEnd = 3
+walls[0].style.gridRowStart = 2
+walls[0].style.gridRowEnd = 2
+
+walls[1].style.gridColumnStart = 5
+walls[1].style.gridColumnEnd = 5
+walls[1].style.gridRowStart = 1
+walls[1].style.gridRowEnd = 5
+
+walls[2].style.gridColumnStart = 2
+walls[2].style.gridColumnEnd = 2
+walls[2].style.gridRowStart = 2
+walls[2].style.gridRowEnd = 5
+
+walls[3].style.gridColumnStart = 2
+walls[3].style.gridColumnEnd = 2
+walls[3].style.gridRowStart = 6
+walls[3].style.gridRowEnd = 8
+
+walls[4].style.gridColumnStart = 5
+walls[4].style.gridColumnEnd = 5
+walls[4].style.gridRowStart = 6
+walls[4].style.gridRowEnd = 8
+
+walls[5].style.gridColumnStart = 8
+walls[5].style.gridColumnEnd = 8
+walls[5].style.gridRowStart = 1
+walls[5].style.gridRowEnd = 7
+
+walls[6].style.gridColumnStart = 11
+walls[6].style.gridColumnEnd = 11
+walls[6].style.gridRowStart = 1
+walls[6].style.gridRowEnd = 3
+
+walls[7].style.gridColumnStart = 11
+walls[7].style.gridColumnEnd = 13
+walls[7].style.gridRowStart = 5
+walls[7].style.gridRowEnd = 7
+
+walls[8].style.gridColumnStart = 6
+walls[8].style.gridColumnEnd = 8
+walls[8].style.gridRowStart = 1
+walls[8].style.gridRowEnd = 3
+
+hazards[0].style.gridColumn = 1
+hazards[0].style.gridRow = 5
+
+hazards[1].style.gridColumn = 10
+hazards[1].style.gridRow = 1
+
+hazards[2].style.gridColumn = 9
+hazards[2].style.gridRow = 7
+
+function createWallGrid() {
+    for (let i = 0; i < walls.length; i++) {
+        let arrObj = {
+            x1: parseInt(walls[i].style.gridColumnStart),
+            x2: parseInt(walls[i].style.gridColumnEnd),
+            y1: parseInt(walls[i].style.gridRowStart),
+            y2: parseInt(walls[i].style.gridRowEnd)
+        }
+        wallGridArr.push(arrObj)
+    }
+    return wallGridArr
+}
+
+function createHazardGrid() {
+    for (let i = 0; i < hazards.length; i++) {
+        let arrObj = {
+            x: parseInt(hazards[i].style.gridColumn),
+            y: parseInt(hazards[i].style.gridRow),
+        }
+        hazardGridArr.push(arrObj)
+    }
+    return hazardGridArr
+}
+
+createWallGrid()
+createHazardGrid()
+
 const isInGrid = function(x, y) {
-    if (x < 0 || y < 0 || x > 11 || y > 7) {
+    if (x < 0 || y < 0 || x > 11 || y > 6) {
         return false
     }
     return true
 }
 
 const isBlockInWay = function(x, y) {
-    for (let i = 0; i < walls.length; i++) {
-        const wall = walls[i]
-        if (player.style.left + player.style.width > wall.style.width) {
-            console.log("hit wall")
-            return true
+    for(let i = 0; i < wallGridArr.length; i++) {
+        if ((playerPos.x <= wallGridArr[i].x1 || playerPos.x > wallGridArr[i].x2) 
+        && (playerPos.y <= wallGridArr[i].y1 || playerPos.y > wallGridArr[i].y2)) {
+            console.log('x')
         }
     }
     return false
@@ -26,9 +108,10 @@ const isBlockInWay = function(x, y) {
 
 const isHazardInWay = function(x, y) {
     for (let j = 0; j < hazards.length; j++) {
-        const hazard = hazards[j]
-        if (playerPos.x + player.style.width > wall.style.width) {
-            console.log("hit wall")
+        if ((playerPos.x + 1 === hazardGridArr[j].x) && (playerPos.y + 1 === hazardGridArr[j].y)) {
+            console.log('y')
+            console.log(hazardGridArr[j].x)
+            console.log(hazardGridArr[j].y)
             return true
         }
     }
@@ -36,8 +119,7 @@ const isHazardInWay = function(x, y) {
 }
 
 const isAbleToMove = function(x, y) {
-    console.log(x, y)
-    if (!isInGrid(x, y) || isBlockInWay(x, y)) {
+    if (!isInGrid(x, y) || isHazardInWay(x, y)) {
         return false
     }
     return true
