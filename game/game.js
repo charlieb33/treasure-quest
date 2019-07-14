@@ -13,6 +13,9 @@ walls[0].style.gridColumnEnd = 3
 walls[0].style.gridRowStart = 2
 walls[0].style.gridRowEnd = 2
 
+wallOneColSpan = parseInt(walls[0].style.gridColumnEnd) - parseInt(walls[0].style.gridColumnStart)
+console.log(wallOneColSpan)
+
 walls[1].style.gridColumnStart = 5
 walls[1].style.gridColumnEnd = 5
 walls[1].style.gridRowStart = 1
@@ -108,7 +111,7 @@ const isBlockInWay = function(x, y) {
 
 const isHazardInWay = function(x, y) {
     for (let j = 0; j < hazards.length; j++) {
-        if ((playerPos.x + 1 === hazardGridArr[j].x) && (playerPos.y + 1 === hazardGridArr[j].y)) {
+        if ((hazardGridArr[j].x === x) && (hazardGridArr[j].y === y)) {
             console.log('y')
             console.log(hazardGridArr[j].x)
             console.log(hazardGridArr[j].y)
