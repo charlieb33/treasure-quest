@@ -1,6 +1,15 @@
+header {
+    background: #D3D3D3;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 .title {
-    font-size: 40px;
+    font-size: 50px;
     text-decoration: underline;
+    text-align: center;
+    font-family: 'Bahianita', cursive;
 }
 
 #game-board {
