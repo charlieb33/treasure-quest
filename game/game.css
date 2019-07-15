@@ -22,11 +22,12 @@
 }
 
 #treasure {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
+    align-self: center;
+    justify-self: center;
     background-color: green;
-    grid-column: 12;
-    grid-row: 3;
+    animation: pulse 3s infinite;
 }
 
 .wall {
@@ -53,11 +54,7 @@
     background-color: fuchsia;
 }
 
-/* .treasurePulse {
-    animation: pulse infinite;
-} */
-
-/* #hazard-one {
+#hazard-one {
     animation: leftToRight 3s infinite;
 }
 
@@ -67,19 +64,19 @@
 
 #hazard-three {
     animation: upToDown 3s infinite;
-} */
+}
 
-/* @keyframes pulse {
+@keyframes pulse {
     0% {
-
+        transform: scale(2, 2)
     }
     50% {
-
+        transform: scale(0.5, 0.5)
     }
     100% {
-
+        transform: scale(2, 2)
     }
-} */
+}
 
 @keyframes leftToRight {
     0% {

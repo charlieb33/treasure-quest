@@ -2,13 +2,13 @@
 
 const wallGridArr = []
 const hazardGridArr = []
+const treasureGridArr = []
 const playerPos = {x: 0, y: 0}
 const player = document.getElementById('hero');
 const keys = [87, 38, 65, 37, 83, 40, 68, 39]
 const walls = document.querySelectorAll('.wall')
 const hazards = document.querySelectorAll('.hazard')
-const board = document.getElementById('game-board')
-console.log(board)
+const treasure = document.getElementById('treasure')
 
 walls[0].style.gridColumnStart = 1
 walls[0].style.gridColumnEnd = 3
@@ -64,6 +64,11 @@ hazards[1].style.gridRow = 1
 hazards[2].style.gridColumn = 9
 hazards[2].style.gridRow = 7
 
+treasure.style.gridColumnStart = 12
+treasure.style.gridColumnEnd = 13
+treasure.style.gridRowStart = 3
+treasure.style.gridRowEnd = 4
+
 function createWallGrid() {
     for (let i = 0; i < walls.length; i++) {
         let arrObj = {
@@ -75,6 +80,17 @@ function createWallGrid() {
         wallGridArr.push(arrObj)
     }
     return wallGridArr
+}
+
+function createTreasureGrid() {
+    let arrObj = {
+        x1: parseInt(treasure.style.gridColumnStart),
+        x2: parseInt(treasure.style.gridColumnEnd),
+        y1: parseInt(treasure.style.gridRowStart),
+        y2: parseInt(treasure.style.gridRowEnd)
+    }
+    treasureGridArr.push(arrObj)
+    return treasureGridArr
 }
 
 function createHazardGrid() {
@@ -99,6 +115,7 @@ function makePlayerGridCoordinates(x, y) {
 
 createWallGrid()
 createHazardGrid()
+createTreasureGrid()
 
 const isInGrid = function(x, y) {
     if (x < 0 || y < 0 || x > 11 || y > 6) {
@@ -116,17 +133,28 @@ const isBlockInWay = function(pos) {
     return false
 }
 
-const isHazardInWay = function(x, y) {
-    for (let j = 0; j < hazards.length; j++) {
-        if ((hazardGridArr[j].x === x) && (hazardGridArr[j].y === y)) {
-            console.log('y')
-            console.log(hazardGridArr[j].x)
-            console.log(hazardGridArr[j].y)
+const isHazardInWay = function(pos) {
+    console.log('hazard')
+    for (let j = 0; j < hazardGridArr.length; j++) {
+        if ((pos.x1 >= hazardGridArr[j].x && pos.x2 <= hazardGridArr[j].x) && (pos.y1 >= hazardGridArr[j].y && pos.y2 <= hazardGridArr[j].y)) {
             return true
         }
     }
     return false
 }
+
+const isTreasureInWay = function(pos) {
+    for (let k = 0; k < treasureGridArr.length; k++) {
+        if ((pos.x1 === treasureGridArr[k].x1 && pos.x2 === treasureGridArr[k].x2) && (pos.y1 === treasureGridArr[k].y1 && pos.y2 === treasureGridArr[k].y2)) {
+            return true
+        }
+    }
+    return false
+}
+
+const removeTreasure = function() {}
+
+const removePlayer = function() {}
 
 const isAbleToMove = function(x, y) {
     if (!isInGrid(x, y) || isBlockInWay(makePlayerGridCoordinates(x, y))) {
@@ -138,6 +166,12 @@ const isAbleToMove = function(x, y) {
 const moveThePlayer = function(x, y) {
     player.style.left = (playerPos.x * 100) + 'px';
     player.style.top = (playerPos.y * 100) + 'px';
+    if (isTreasureInWay(makePlayerGridCoordinates(x, y))) {
+        alert("Congratulations! You found the treasure!")
+    }
+    if (isHazardInWay(makePlayerGridCoordinates(x, y))) {
+        alert("GAME OVER")
+    }
 }
 
 function goUp() {
@@ -186,3 +220,13 @@ document.body.addEventListener('keydown', function(evt) {
         goRight()
     }
 })
+
+// setInterval(function(){
+//     let element = document.getElementById('hazard-one');
+//     let elementCoordiantes = element.getBoundingClientRect();
+//     console.log('HAZARD_ONE:', elementCoordiantes.x, elementCoordiantes.y)
+
+//     let hero = document.getElementById('hero')
+//     let heroCoordinates = hero.getBoundingClientRect();
+//     console.log('HERO:', heroCoordinates.x, heroCoordinates.y)
+// }, 1000)
