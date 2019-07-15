@@ -21,93 +21,45 @@
     position: absolute;
 }
 
-#treasure {
-    width: 50px;
-    height: 50px;
+.treasure {
+    width: 100px;
+    height: 100px;
     align-self: center;
     justify-self: center;
-    background-color: green;
-    animation: pulse 4s infinite;
+    background-size: contain;
+    animation: pulse 3s infinite;
+}
+
+#main {
+    background-image: url('../assets/main-jewel.gif');
+}
+
+#secret {
+    background-image: url('../assets/secret-jewel.gif');
 }
 
 .wall {
-    background-color: orange;
-}
-
-.secret-treasure {
-    width: 100px;
-    height: 100px;
-    background-color: purple;
-    position: absolute;
+    background-image: url('../assets/wall.jpeg');
+    background-size: contain;
 }
 
 .fake-wall {
-    width: 100px;
-    height: 100px;
     background-color: darkgray;
-    position: absolute;
 }
 
 .hazard {
-    background-color: fuchsia;
-}
-
-#hazard-one {
-    animation: leftToRight 3s infinite;
-}
-
-#hazard-two {
-    animation: downToUp 3s infinite;
-}
-
-#hazard-three {
-    animation: upToDown 3s infinite;
+    background-image: url('../assets/fire.gif');
+    background-size: contain;
 }
 
 @keyframes pulse {
     0% {
-        transform: scale(2, 2)
+        transform: scale(.75, .75)
     }
     50% {
         transform: scale(1, 1)
     }
     100% {
-        transform: scale(2, 2)
+        transform: scale(.75, .75)
     }
 }
-
-/* @keyframes leftToRight {
-    0% {
-        transform: translateX(0px)
-    }
-    50% {
-        transform: translateX(600px)
-    }
-    100% {
-        transform: translateX(0px)
-    }
-}
-
-@keyframes downToUp {
-    0% {
-        transform: translateY(600px)
-    }
-    50% {
-        transform: translateY(0px)
-    }
-    100% {
-        transform: translateY(600px)
-    }
-}
-
-@keyframes upToDown {
-    0% {
-        transform: translateY(-600px)
-    }
-    50% {
-        transform: translateY(0px)
-    }
-    100% {
-        transform: translateY(-600px)
-    }
-} */
