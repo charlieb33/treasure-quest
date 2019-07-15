@@ -50,21 +50,47 @@ walls[6].style.gridRowEnd = 3
 walls[7].style.gridColumnStart = 11
 walls[7].style.gridColumnEnd = 13
 walls[7].style.gridRowStart = 5
-walls[7].style.gridRowEnd = 7
+walls[7].style.gridRowEnd = 8
 
 walls[8].style.gridColumnStart = 6
 walls[8].style.gridColumnEnd = 8
-walls[8].style.gridRowStart = 1
-walls[8].style.gridRowEnd = 3
+walls[8].style.gridRowStart = 3
+walls[8].style.gridRowEnd = 4
 
-hazards[0].style.gridColumn = 1
-hazards[0].style.gridRow = 5
+hazards[0].style.gridColumnStart = 1
+hazards[0].style.gridColumnEnd = 2
+hazards[0].style.gridRowStart = 3
+hazards[0].style.gridRowEnd = 8
 
-hazards[1].style.gridColumn = 10
-hazards[1].style.gridRow = 1
+hazards[1].style.gridColumnStart = 3
+hazards[1].style.gridColumnEnd = 4
+hazards[1].style.gridRowStart = 2
+hazards[1].style.gridRowEnd = 4
 
-hazards[2].style.gridColumn = 9
-hazards[2].style.gridRow = 7
+hazards[2].style.gridColumnStart = 1
+hazards[2].style.gridColumnEnd = 3
+hazards[2].style.gridRowStart = 5
+hazards[2].style.gridRowEnd = 6
+
+hazards[3].style.gridColumnStart = 6
+hazards[3].style.gridColumnEnd = 7
+hazards[3].style.gridRowStart = 6
+hazards[3].style.gridRowEnd = 8
+
+hazards[4].style.gridColumnStart = 11
+hazards[4].style.gridColumnEnd = 12
+hazards[4].style.gridRowStart = 4
+hazards[4].style.gridRowEnd = 5
+
+hazards[5].style.gridColumnStart = 10
+hazards[5].style.gridColumnEnd = 11
+hazards[5].style.gridRowStart = 5
+hazards[5].style.gridRowEnd = 8
+
+hazards[6].style.gridColumnStart = 9
+hazards[6].style.gridColumnEnd = 10
+hazards[6].style.gridRowStart = 3
+hazards[6].style.gridRowEnd = 4
 
 treasure.style.gridColumnStart = 12
 treasure.style.gridColumnEnd = 13

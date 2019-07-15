@@ -49,8 +49,6 @@
 }
 
 .hazard {
-    width: 100px;
-    height: 100px;
     background-color: fuchsia;
 }
 
@@ -78,7 +76,7 @@
     }
 }
 
-@keyframes leftToRight {
+/* @keyframes leftToRight {
     0% {
         transform: translateX(0px)
     }
@@ -112,4 +110,4 @@
     100% {
         transform: translateY(-600px)
     }
-}
+} */
