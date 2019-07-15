@@ -225,7 +225,7 @@ function moveThePlayer(x, y) {
   if (isTreasureInWay(makePlayerGridCoordinates(x, y))) {
     removePlayer();
     removeTreasure();
-    text.innerText = 'Congratulations! You found the treasure!';
+    text.innerText = 'WAY TO GO!';
   }
   if (isHazardInWay(makePlayerGridCoordinates(x, y))) {
     removePlayer();

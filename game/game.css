@@ -17,7 +17,10 @@
 #hero {
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-image: url('../assets/hero.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     margin: 0 auto;
     position: absolute;
 }
