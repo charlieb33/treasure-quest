@@ -9,6 +9,8 @@ const keys = [87, 38, 65, 37, 83, 40, 68, 39]
 const walls = document.querySelectorAll('.wall')
 const hazards = document.querySelectorAll('.hazard')
 const treasure = document.getElementById('treasure')
+let playerGone = false
+let treasureGone = false
 
 walls[0].style.gridColumnStart = 1
 walls[0].style.gridColumnEnd = 3
@@ -66,8 +68,16 @@ hazards[2].style.gridRow = 7
 
 treasure.style.gridColumnStart = 12
 treasure.style.gridColumnEnd = 13
-treasure.style.gridRowStart = 3
-treasure.style.gridRowEnd = 4
+treasure.style.gridRowStart = 2
+treasure.style.gridRowEnd = 3
+
+function getHazardMargin() {
+    for(let i = 0; i < hazards.length; i++) {
+        //let hazardsStyle = window.getComputedStyle(hazards[i])
+        console.log(hazards[i].offsetTop)
+    }
+}
+//setInterval(getHazardMargin, 100)
 
 function createWallGrid() {
     for (let i = 0; i < walls.length; i++) {
@@ -96,8 +106,8 @@ function createTreasureGrid() {
 function createHazardGrid() {
     for (let i = 0; i < hazards.length; i++) {
         let arrObj = {
-            x: parseInt(hazards[i].style.gridColumn),
-            y: parseInt(hazards[i].style.gridRow),
+            x: parseInt(hazards[i].getBoundingClientRect),
+            y: parseInt(hazards[i].getBoundingClientRect),
         }
         hazardGridArr.push(arrObj)
     }
@@ -136,7 +146,7 @@ const isBlockInWay = function(pos) {
 const isHazardInWay = function(pos) {
     console.log('hazard')
     for (let j = 0; j < hazardGridArr.length; j++) {
-        if ((pos.x1 >= hazardGridArr[j].x && pos.x2 <= hazardGridArr[j].x) && (pos.y1 >= hazardGridArr[j].y && pos.y2 <= hazardGridArr[j].y)) {
+        if ((pos.x1 >= hazardGridArr[j].x1 && pos.x2 <= hazardGridArr[j].x2) && (pos.y1 >= hazardGridArr[j].y1 && pos.y2 <= hazardGridArr[j].y2)) {
             return true
         }
     }
@@ -152,9 +162,15 @@ const isTreasureInWay = function(pos) {
     return false
 }
 
-const removeTreasure = function() {}
+const removeTreasure = function() {
+    treasure.remove()
+    treasureGone = true
+}
 
-const removePlayer = function() {}
+const removePlayer = function() {
+    player.remove()
+    playerGone = true
+}
 
 const isAbleToMove = function(x, y) {
     if (!isInGrid(x, y) || isBlockInWay(makePlayerGridCoordinates(x, y))) {
@@ -167,10 +183,13 @@ const moveThePlayer = function(x, y) {
     player.style.left = (playerPos.x * 100) + 'px';
     player.style.top = (playerPos.y * 100) + 'px';
     if (isTreasureInWay(makePlayerGridCoordinates(x, y))) {
+        removePlayer()
+        removeTreasure()
         alert("Congratulations! You found the treasure!")
     }
     if (isHazardInWay(makePlayerGridCoordinates(x, y))) {
         alert("GAME OVER")
+        removePlayer()
     }
 }
 
@@ -204,20 +223,22 @@ function goRight() {
 
 document.body.addEventListener('keydown', function(evt) {
     const keyCode = evt.keyCode;
-    if (keys.includes(keyCode)) {
-        evt.preventDefault();
-    }
-    if (keyCode === 87 || keyCode === 38) {
-        goUp()
-    }
-    else if (keyCode === 65 || keyCode === 37) {
-        goLeft()
-    }
-    else if (keyCode === 83 || keyCode === 40) {
-        goDown()
-    }
-    else if (keyCode === 68 || keyCode === 39) {
-        goRight()
+    if (playerGone === false) {
+        if (keys.includes(keyCode)) {
+            evt.preventDefault();
+        }
+        if (keyCode === 87 || keyCode === 38) {
+            goUp()
+        }
+        else if (keyCode === 65 || keyCode === 37) {
+            goLeft()
+        }
+        else if (keyCode === 83 || keyCode === 40) {
+            goDown()
+        }
+        else if (keyCode === 68 || keyCode === 39) {
+            goRight()
+        }
     }
 })
 
