@@ -57,7 +57,7 @@
     animation: pulse infinite;
 } */
 
-#hazard-one {
+/* #hazard-one {
     animation: leftToRight 3s infinite;
 }
 
@@ -67,7 +67,7 @@
 
 #hazard-three {
     animation: upToDown 3s infinite;
-}
+} */
 
 /* @keyframes pulse {
     0% {
