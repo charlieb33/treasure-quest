@@ -9,6 +9,7 @@ const hazards = document.querySelectorAll('.hazard');
 const treasures = document.querySelectorAll('.treasure');
 const mainTreasure = document.getElementById('main');
 const secretTreasure = document.getElementById('secret');
+const text = document.querySelector('h1');
 let playerGone = false;
 
 walls[0].style.gridColumnStart = 1;
@@ -111,11 +112,6 @@ secretTreasure.style.gridColumnEnd = 7;
 secretTreasure.style.gridRowStart = 2;
 secretTreasure.style.gridRowEnd = 3;
 
-// fakeWall.style.gridColumnStart = 8;
-// fakeWall.style.gridColumnEnd = 9;
-// fakeWall.style.gridRowStart = 1;
-// fakeWall.style.gridRowEnd = 2;
-
 function createWallGrid() {
   for (let i = 0; i < walls.length; i += 1) {
     const arrObj = {
@@ -132,14 +128,13 @@ function createWallGrid() {
 function createTreasureGrid() {
   for (let i = 0; i < treasures.length; i += 1) {
     const arrObj = {
-      x1: parseInt(treasures.style.gridColumnStart, 10),
-      x2: parseInt(treasures.style.gridColumnEnd, 10),
-      y1: parseInt(treasures.style.gridRowStart, 10),
-      y2: parseInt(treasures.style.gridRowEnd, 10),
+      x1: parseInt(treasures[i].style.gridColumnStart, 10),
+      x2: parseInt(treasures[i].style.gridColumnEnd, 10),
+      y1: parseInt(treasures[i].style.gridRowStart, 10),
+      y2: parseInt(treasures[i].style.gridRowEnd, 10),
     };
     treasureGridArr.push(arrObj);
   }
-  console.log(treasureGridArr);
   return treasureGridArr;
 }
 
@@ -207,7 +202,9 @@ const isTreasureInWay = (pos) => {
 };
 
 const removeTreasure = () => {
-  treasure.remove();
+  for (let i = 0; i < treasures.length; i += 1) {
+    treasures[i].remove();
+  }
 };
 
 const removePlayer = () => {
@@ -228,11 +225,11 @@ function moveThePlayer(x, y) {
   if (isTreasureInWay(makePlayerGridCoordinates(x, y))) {
     removePlayer();
     removeTreasure();
-    alert('Congratulations! You found the treasure!');
+    text.innerText = 'Congratulations! You found the treasure!';
   }
   if (isHazardInWay(makePlayerGridCoordinates(x, y))) {
-    alert('GAME OVER');
     removePlayer();
+    text.innerText = 'GAME OVER';
   }
 }
 
