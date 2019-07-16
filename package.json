@@ -1,6 +1,6 @@
 {
   "name": "treasure-quest",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "The user plays as an explorer, and they have to traverse a maze to find treasure. The player cannot pass through most of the walls, but some walls are fake and have secret treasures in them. Find either the main treasure or all secret treasures to win the game. Avoid certain hazards because hitting them will result in a game over.",
   "main": "index.js",
   "scripts": {

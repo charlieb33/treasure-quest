@@ -1,113 +1,78 @@
+header {
+    background: #D3D3D3;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 .title {
-    font-size: 40px;
+    font-size: 50px;
     text-decoration: underline;
+    text-align: center;
+    font-family: 'Bahianita', cursive;
 }
 
 #game-board {
     width: 1200px;
-    height: 800px;
-    background-color: blue;
+    height: 700px;
+    background-image: url('../assets/cave.jpg');
+    background-size: contain;
     margin: 0 auto;
     position: relative;
     display: grid;
-    grid-template: repeat(8, 100px) / repeat(12, 100px);
+    grid-template: repeat(7, 100px) / repeat(12, 100px);
 }
 
 #hero {
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-image: url('../assets/hero.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     margin: 0 auto;
     position: absolute;
 }
 
-#treasure {
+.treasure {
     width: 100px;
     height: 100px;
-    background-color: green;
-    /* position: absolute; */
-    grid-column: 12;
-    grid-row: 3;
+    align-self: center;
+    justify-self: center;
+    background-size: contain;
+    animation: pulse 3s infinite;
 }
 
-.wall {
-    /* width: 100px;
-    height: 100px; */
-    background-color: orange;
-    /* position: absolute; */
+#main {
+    background-image: url('../assets/main-jewel.gif');
 }
 
-#wall-one {
-    grid-column: 1 / 3;
-    grid-row: 3;
+#secret {
+    background-image: url('../assets/secret-jewel.gif');
 }
 
-#wall-two {
-    grid-column: 5;
-    grid-row: 1 / 6;
-}
-
-#wall-three {
-    grid-column: 2;
-    grid-row: 3 / 6;
-}
-
-#wall-four {
-    grid-column: 2;
-    grid-row: 7 / -1;
-}
-
-#wall-five {
-    grid-column: 5;
-    grid-row: 7 / -1;
-}
-
-#wall-six {
-    grid-column: 8;
-    grid-row: 1 / 8;
-}
-
-#wall-seven {
-    grid-column: 11;
-    grid-row: 1 / 4;
-}
-
-#wall-eight {
-    grid-column: 11 / -1;
-    grid-row: 6 / 8;
-}
-
-#wall-nine {
-    grid-column: 6 / 8;
-    grid-row: 1 / 4;
-}
-
-.secret-treasure {
-    width: 100px;
-    height: 100px;
-    background-color: purple;
-    position: absolute;
+.wall, .fake-wall {
+    background-image: url('../assets/wall.jpeg');
+    background-size: contain;
 }
 
 .fake-wall {
-    width: 100px;
-    height: 100px;
-    background-color: darkgray;
-    position: absolute;
+    grid-area: 1 / 8 / 2 / 9;
 }
 
 .hazard {
-    width: 100px;
-    height: 100px;
-    background-color: fuchsia;
+    background-image: url('../assets/fire.gif');
+    background-size: contain;
 }
 
-#hazard-one { 
-    grid-column: 1;
-    grid-row: 6;
-}
-
-#hazard-two { 
-    grid-column: 10;
-    grid-row: 1;
+@keyframes pulse {
+    0% {
+        transform: scale(.75, .75)
+    }
+    50% {
+        transform: scale(1, 1)
+    }
+    100% {
+        transform: scale(.75, .75)
+    }
 }

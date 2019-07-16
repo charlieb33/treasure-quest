@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    background-color: #D3D3D3;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Bahianita', cursive;
+    font-size: 60px;
+    text-decoration: underline;
+}
+
+a {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.buttons {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+button {
+    background-color: #00008B; 
+}
