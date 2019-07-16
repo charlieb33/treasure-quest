@@ -1,5 +1,7 @@
 # Treasure Quest
 
+![game-pic](https://media.git.generalassemb.ly/user/21399/files/23049c00-a7b3-11e9-9312-8f08db677d0c)
+
 ### About the Game
 * Play as a fearless treasure hunter, and a explore the maze to earn your fortune. Legend says there are also secret treausres within the walls. Be wary, for one false move will bring your journey to a sudden end.
 
