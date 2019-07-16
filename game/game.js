@@ -226,10 +226,14 @@ function moveThePlayer(x, y) {
     removePlayer();
     removeTreasure();
     text.innerText = 'WAY TO GO!';
+    text.style.animation = 'pulse 3s infinite';
+    text.style.color = '#006400';
   }
   if (isHazardInWay(makePlayerGridCoordinates(x, y))) {
     removePlayer();
-    text.innerText = 'GAME OVER';
+    text.innerText = 'GAME OVER!';
+    text.style.animation = 'pulse 3s infinite';
+    text.style.color = '#8B0000';
   }
 }
 
